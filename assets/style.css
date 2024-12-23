@@ -191,23 +191,24 @@ footer a {
     height: 30vw;
 }
 
-/* Estilo padrão (Modo Claro) */
+/* Estilo padrão (Modo Escuro) */
 body {
-    background-color: #ffffff;  /* Fundo branco no modo claro */
-    color: #363333;  /* Texto preto no modo claro */
+    background-color: #121212;  /* Fundo preto no modo escuro */
+    color: #ffffff;  /* Texto branco no modo escuro */
     transition: background-color 0.3s, color 0.3s; /* Transição suave entre os modos */
 }
 
-/* Estilo do modo escuro */
-body.dark-mode {
-    background-color: #121212;  /* Fundo preto no modo escuro */
-    color: #ffffff;  /* Texto branco no modo escuro */
+/* Estilo para o modo claro */
+body.light-mode {
+    background-color: #ffffff;  /* Fundo branco no modo claro */
+    color: #333333;  /* Texto preto no modo claro */
 }
 
 /* Estilo do botão de alternância */
 button#dark-mode-toggle {
-    position: absolute;
-    right: 7px;
+    position: fixed;
+    top: 20px;
+    right: 8px;
     background-color: transparent;
     border: none;
     font-size: 24px;
@@ -215,11 +216,11 @@ button#dark-mode-toggle {
 }
 
 /* Ícone de modo claro (lua no modo escuro) */
-body.dark-mode button#dark-mode-toggle #mode-icon {
-    content: "🌞";  /* Ícone de sol quando no modo escuro */
+body.light-mode button#dark-mode-toggle #mode-icon {
+    content: "🌙";  /* Ícone de lua quando no modo claro */
 }
 
-/* Ícone de modo escuro (lua no modo claro) */
-button#dark-mode-toggle #mode-icon {
-    content: "🌙";  /* Ícone de lua quando no modo claro */
+/* Ícone de modo escuro (sol no modo escuro) */
+body.dark-mode button#dark-mode-toggle #mode-icon {
+    content: "🌞";  /* Ícone de sol quando no modo escuro */
 }

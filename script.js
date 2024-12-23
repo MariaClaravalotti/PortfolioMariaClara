@@ -56,34 +56,50 @@ setInterval(showNextImage, 10000); // Troca de imagem a cada 10 segundos
 
 
 // Botão de alternância
+
+// Botão de alternância
 const toggleButton = document.getElementById("dark-mode-toggle");
 const modeIcon = document.getElementById("mode-icon");
 
-// Alterna o modo escuro e claro
-toggleButton.addEventListener("click", function() {
-    document.body.classList.toggle("dark-mode");
+// Função para ativar o modo escuro
+function enableDarkMode() {
+    document.body.classList.add("dark-mode");
+    document.body.classList.remove("light-mode");
+    modeIcon.textContent = "🌞";  // Ícone de sol no modo escuro
+    localStorage.setItem("theme", "dark");  // Salva a preferência no localStorage
+}
 
-    // Atualiza o ícone de modo (lua/sol)
+// Função para ativar o modo claro
+function enableLightMode() {
+    document.body.classList.add("light-mode");
+    document.body.classList.remove("dark-mode");
+    modeIcon.textContent = "🌙";  // Ícone de lua no modo claro
+    localStorage.setItem("theme", "light");  // Salva a preferência no localStorage
+}
+
+// Alternar entre modos
+toggleButton.addEventListener("click", function() {
     if (document.body.classList.contains("dark-mode")) {
-        modeIcon.textContent = "🌞";  // Ícone de sol no modo escuro
-        localStorage.setItem("theme", "dark");  // Salva a preferência no localStorage
+        enableLightMode();
     } else {
-        modeIcon.textContent = "🌙";  // Ícone de lua no modo claro
-        localStorage.setItem("theme", "light");  // Salva a preferência no localStorage
+        enableDarkMode();
     }
 });
 
-// Recuperar a preferência de tema salva no localStorage
+// Verificar a preferência de tema salva no localStorage
 const savedTheme = localStorage.getItem("theme");
+
 if (savedTheme) {
-    document.body.classList.add(savedTheme); // Aplica o tema salvo
-    // Atualiza o ícone conforme o tema salvo
     if (savedTheme === "dark") {
-        modeIcon.textContent = "🌞";
+        enableDarkMode();
     } else {
-        modeIcon.textContent = "🌙";
+        enableLightMode();
     }
+} else {
+    // Se não houver preferência salva, iniciar com o modo escuro como padrão
+    enableDarkMode();
 }
+
 
 
 
