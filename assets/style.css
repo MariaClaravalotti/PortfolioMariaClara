@@ -20,7 +20,7 @@ header {
 }
 img{
     height: auto;
-    width: 100%;
+    max-width: 100%;
    
     
 }
@@ -96,13 +96,18 @@ nav a {
     display: flex;
     text-align: center;
     width: 20vw;
-    margin-top: 2rem;
     padding: 1rem;
 }
 a:hover{
-  color: #05060a;
+  color: #9ba9d3;
   
 }
+.projetos img{
+    max-width: 100%;
+    height: auto;
+    
+}
+
 
 .skills {
     display: flex;
@@ -184,4 +189,37 @@ footer a {
 .vamos{
     width: 40%;
     height: 30vw;
+}
+
+/* Estilo padrão (Modo Claro) */
+body {
+    background-color: #ffffff;  /* Fundo branco no modo claro */
+    color: #363333;  /* Texto preto no modo claro */
+    transition: background-color 0.3s, color 0.3s; /* Transição suave entre os modos */
+}
+
+/* Estilo do modo escuro */
+body.dark-mode {
+    background-color: #121212;  /* Fundo preto no modo escuro */
+    color: #ffffff;  /* Texto branco no modo escuro */
+}
+
+/* Estilo do botão de alternância */
+button#dark-mode-toggle {
+    position: absolute;
+    right: 7px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Ícone de modo claro (lua no modo escuro) */
+body.dark-mode button#dark-mode-toggle #mode-icon {
+    content: "🌞";  /* Ícone de sol quando no modo escuro */
+}
+
+/* Ícone de modo escuro (lua no modo claro) */
+button#dark-mode-toggle #mode-icon {
+    content: "🌙";  /* Ícone de lua quando no modo claro */
 }

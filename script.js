@@ -17,6 +17,8 @@ document.getElementById("languageButton").addEventListener("click", () => {
   const button = document.getElementById("languageButton");
   button.textContent = currentLanguage === "en" ? "Portuguese" : "Inglês";
 });
+
+
 const carouselContainer = document.getElementById('carousel-container');
 const images = document.querySelectorAll('#carousel-container img');
 const prevButton = document.querySelector('.prev-btn');
@@ -50,9 +52,38 @@ nextButton.addEventListener('click', showNextImage);
 prevButton.addEventListener('click', showPrevImage);
 
 // Carrossel automático
-setInterval(showNextImage, 10000); // Troca de imagem a cada 5 segundos
+setInterval(showNextImage, 10000); // Troca de imagem a cada 10 segundos
 
 
+// Botão de alternância
+const toggleButton = document.getElementById("dark-mode-toggle");
+const modeIcon = document.getElementById("mode-icon");
+
+// Alterna o modo escuro e claro
+toggleButton.addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+
+    // Atualiza o ícone de modo (lua/sol)
+    if (document.body.classList.contains("dark-mode")) {
+        modeIcon.textContent = "🌞";  // Ícone de sol no modo escuro
+        localStorage.setItem("theme", "dark");  // Salva a preferência no localStorage
+    } else {
+        modeIcon.textContent = "🌙";  // Ícone de lua no modo claro
+        localStorage.setItem("theme", "light");  // Salva a preferência no localStorage
+    }
+});
+
+// Recuperar a preferência de tema salva no localStorage
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+    document.body.classList.add(savedTheme); // Aplica o tema salvo
+    // Atualiza o ícone conforme o tema salvo
+    if (savedTheme === "dark") {
+        modeIcon.textContent = "🌞";
+    } else {
+        modeIcon.textContent = "🌙";
+    }
+}
 
 
 
